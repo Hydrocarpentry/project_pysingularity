@@ -3,6 +3,9 @@ Bootstrap: docker
 From: ubuntu:18.04
 %post
     apt-get update && apt-get install -y python-pandas r-base
+	apt-get install wget
+	wget -O /hampt_rd_data.sqlite https://osf.io/mr7jx/?action=download 
+	wget -O /STORM_data_flooded_streets_2010-2016.csv https://github.com/Hydrocarpentry/reproduced_data/blob/master/STORM_data_flooded_streets_2010-2016.csv
     echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
     R --slave -e "install.packages('caret')"
     R --slave -e "install.packages('randomForest')"
