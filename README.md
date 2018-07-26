@@ -8,7 +8,7 @@ Hydroshare website and Github repository.
 -- Following script files are needed for building the Singularity image:
 ```prepare_flood_events_table.py; make_dly_obs_table_standalone.py; by_event_for_model.py; model_flood_counts_rf_ps_cln.r; plot_count_model_results.py; test.sh```
 -- The following input data files are needed to be in the same working directory for building the Singularity image:
-STORM_data_flooded_streets_2010-2016.csv; hampt_rd_data.sqlite
+```STORM_data_flooded_streets_2010-2016.csv; hampt_rd_data.sqlite```
   - Download the data "Raw street flood report data from Norfolk,VA 2010-2016" from the [GitHub repository](https://github.com/Hydrocarpentry/reproduced_data/blob/master/STORM_data_flooded_streets_2010-2016.csv). 
   - Download the data "Hamton Roads Enfironmental Time Series Data" from Hydroshare repository or from [OSF source](https://osf.io/mr7jx/?action=download)
 -- The Singularity image can be built using the above input files.
