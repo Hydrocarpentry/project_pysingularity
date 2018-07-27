@@ -31,6 +31,7 @@ pd.options.mode.chained_assignment = None  # default='warn'
 # In[2]:
 
 file = sys.argv[1]
+file2 = sys.argv[2]
 out = sys.argv[2]
 
 flood_events = pd.read_csv(file)
@@ -182,7 +183,7 @@ event_df
 # In[20]:
 
 #feature_df = get_db_table_as_df('nor_daily_observations', dbfilename=db_filename)
-feature_df = pd.read_csv('nor_daily_observations_standalone.csv')
+feature_df = pd.read_csv(file2)
 feature_df['Datetime'] = pd.to_datetime(feature_df['Datetime'])
 feature_df.set_index('Datetime', inplace = True)
 feature_df.head()
