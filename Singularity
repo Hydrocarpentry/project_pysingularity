@@ -9,6 +9,7 @@ From: ubuntu:18.04
     echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
     R --slave -e "install.packages('caret')"
     R --slave -e "install.packages('randomForest')"
+    R --slave -e "install.packages('getopt')"
 %files
     prepare_flood_events_table.py /tmp
     make_dly_obs_table_standalone.py /tmp

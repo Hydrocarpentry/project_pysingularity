@@ -14,13 +14,14 @@ if module_path not in sys.path:
 import pandas as pd
 import sqlite3
 
+file = sys.argv[1]
+out = sys.argv[2]
 
 # ### Read in the data
 
 # In[2]:
 
-cds = pd.read_csv('STORM_data_flooded_streets_2010-2016.csv')
-
+cds = pd.read_csv(file)
 
 # ### Index by location name and subset to just columns we want
 
@@ -84,7 +85,7 @@ cds
 
 #con = sqlite3.connect(db_filename)
 #cds.to_sql(con=con, name="flood_events", if_exists="replace")
-cds.to_csv('flood_events.csv')
+cds.to_csv(out)
 
 
 # In[15]:
