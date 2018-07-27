@@ -30,7 +30,10 @@ pd.options.mode.chained_assignment = None  # default='warn'
 
 # In[2]:
 
-flood_events = pd.read_csv('flood_events.csv')
+file = sys.argv[1]
+out = sys.argv[2]
+
+flood_events = pd.read_csv(file)
 flood_events['event_date'] = pd.to_datetime(flood_events['event_date'])
 flood_events['event_name'] = flood_events['event_name'].str.strip()
 flood_events['dates'] = pd.to_datetime(flood_events['dates'])
@@ -364,7 +367,7 @@ avdf['WGF6'] = np.where(avdf['WGF6'].isnull(), avdf['AWND'], avdf['WGF6'])
 # In[37]:
 
 #avdf.to_sql(name='for_model_avgs', con=con, index=False, if_exists='replace')
-avdf.to_csv('for_model_avgs.csv')
+avdf.to_csv(out)
 
 
 # In[38]:

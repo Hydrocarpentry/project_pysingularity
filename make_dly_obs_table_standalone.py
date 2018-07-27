@@ -9,7 +9,8 @@ import sys
 import pandas as pd
 import numpy as np
 import sqlite3
-db_filepath = "hampt_rd_data.sqlite"
+#db_filepath = "hampt_rd_data.sqlite"
+db_filepath = sys.argv[1]
 import matplotlib
 matplotlib.use('Agg')
 

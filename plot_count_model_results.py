@@ -8,6 +8,9 @@ matplotlib.rcParams.update({'font.size': 8})
 matplotlib.rcParams['font.family'] = 'sans-serif'
 matplotlib.rcParams['font.sans-serif'] = ['Arial']
 
+# files
+trainfile = sys.argv[1]
+testfile = sys.argv[2]
 
 def plot_results(ax, df, true_col, pred_col, set_name, model_name, fmt='o', 
         alpha=0.5, label='training', ax_title=''):
@@ -49,12 +52,12 @@ def plot_results(ax, df, true_col, pred_col, set_name, model_name, fmt='o',
     return ax
 
 def plot_trn_tst_together(model_type, suffix, axs, ax_title=''):
-    df_trn_res = pd.read_csv('{}_{}_train.csv'.format(model_type, suffix), 
+    df_trn_res = pd.read_csv(trainfile.format(model_type, suffix), 
                              header=-1)
     axs = plot_results(axs, df_trn_res, 1, 2, 'training', 
                        model_type, label='training', alpha=0.5, 
                        ax_title=ax_title)
-    df_tst_res = pd.read_csv('{}_{}_test.csv'.format(model_type, suffix), 
+    df_tst_res = pd.read_csv(testfile.format(model_type, suffix), 
                              header=-1)
     axs = plot_results(axs, df_tst_res, 1, 2, 'testing', 
                        model_type, fmt='v', alpha=0.5, label='evaluation', 
@@ -66,9 +69,9 @@ def plot_model_seperately(model_type, suffix):
                            sharex=True, figsize=(3.5, 3.5))
     plot_trn_tst_together(model_type, suffix, axs)
     plt.tight_layout()
-    plt.savefig('results_{}_{}.jpg'.format(model_type, suffix), 
+    plt.savefig('results_{}.jpg'.format(model_type, suffix), 
                 dpi=300)
-    plt.savefig('results_{}_{}.eps'.format(model_type, suffix), 
+    plt.savefig('results_{}.eps'.format(model_type, suffix), 
                 dpi=1000)
     plt.show()
 
@@ -85,7 +88,7 @@ def plot_side_by_side(models, suffix):
     plt.show()
 
 try:
-    suffix = sys.argv[1]
+    suffix = sys.argv[3]
 except IndexError:
     raise IndexError("No argument given for suffix, should be first command \
                      line arg")

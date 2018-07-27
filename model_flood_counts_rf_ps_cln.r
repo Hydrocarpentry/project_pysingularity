@@ -1,5 +1,15 @@
 library(caret)
 library(randomForest)
+library(getopt)
+
+args<-commandArgs(trailingOnly=TRUE)
+
+options<-matrix(c('input', 'i', 1, "character"),
+                   ncol=4, byrow=TRUE)
+
+ret.opts<-getopt(options, args)
+
+input<-ret.opts$input
 
 run_model = function(model_type, trn_data, trn_in_data, trn_out_data, tst_in_data, tst_out_data, fmla){
   if (model_type == 'poisson'){
@@ -58,7 +68,7 @@ remove_cols= function(l, cols){
 #}
 
 
-df = read.csv('for_model_avgs.csv', )
+df = read.csv(input, )
 
 colnames(df)
 
@@ -116,4 +126,4 @@ for (i in 1:101){
 
 colnames(import_df) = 1:ncol(import_df)
 row.names(import_df) = in_col_names
-write.csv(import_df, paste('rf_impo_', suffix, sep=""), append=TRUE)
+write.csv(import_df, paste0('rf_impo_', suffix, ".csv"))
