@@ -32,7 +32,7 @@ pd.options.mode.chained_assignment = None  # default='warn'
 
 file = sys.argv[1]
 file2 = sys.argv[2]
-out = sys.argv[2]
+out = sys.argv[3]
 
 flood_events = pd.read_csv(file)
 flood_events['event_date'] = pd.to_datetime(flood_events['event_date'])
